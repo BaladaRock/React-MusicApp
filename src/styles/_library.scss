@@ -1,0 +1,61 @@
+.library {
+  background-color: rgb(229, 241, 241);
+  position: fixed;
+  overflow: scroll;
+  overflow-x: hidden;
+  top: 0;
+  left: 0;
+  width: 20rem;
+  height: 100%;
+  box-shadow: 10px 10px 30px rgb(59, 58, 58);
+  border-radius: 1rem;
+  h2 {
+    padding: 2rem;
+  }
+}
+
+.song-description {
+  padding-left: 1rem;
+  h3 {
+    font-size: 1.2rem;
+  }
+  h4 {
+    font-size: 0.8rem;
+  }
+}
+
+.library-song {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  cursor: pointer;
+  img {
+    width: 30%;
+  }
+  &:hover {
+    background-color: rgb(38, 39, 36);
+    .song-description > * {
+      color: white;
+    }
+  }
+}
+
+/* Scrollbar styling for FireFox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(4, 35, 42, 0.7) rgb(192, 188, 188);
+}
+
+/* Use "-webkit-scrollbar" pseudo-element for Chrome and Edge */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: rgb(192, 188, 188);
+  margin: 20px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(4, 35, 42, 0.7);
+  border-radius: 20px;
+  border: transparent;
+}

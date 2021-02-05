@@ -4,10 +4,20 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Lato", sans-serif;
+}
+
 h2,
 h3 {
   color: rgb(80, 76, 76);
 }
+h3,
+h4 {
+  font-weight: 600;
+  color: rgb(107, 103, 103);
+}
 
 @import "./player";
 @import "./song";
+@import "./library";
