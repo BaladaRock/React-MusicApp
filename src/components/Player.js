@@ -23,6 +23,12 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
   };
+
+  const switchSongHandler = (e) => {
+    if (isPlaying) {
+      audioRef.current.play();
+    }
+  };
   const dragHandler = (e) => {
     audioRef.current.currentTime = e.target.value;
     setTimeInfo({ ...timeInfo, currentTime: e.target.value });
@@ -35,7 +41,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
     setTimeInfo({
       ...timeInfo,
       currentTime: e.target.currentTime,
-      duration: e.target.duration,
+      duration: e.target.duration || 0,
     });
   };
 
@@ -67,6 +73,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         />
       </div>
       <audio
+        onLoadedData={switchSongHandler}
         onLoadedMetadata={updateTimeHandler}
         onTimeUpdate={updateTimeHandler}
         ref={audioRef}

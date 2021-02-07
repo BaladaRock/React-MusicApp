@@ -33,10 +33,17 @@
     width: 30%;
   }
   &:hover {
-    background-color: rgb(38, 39, 36);
+    background: rgb(177, 128, 128);
     .song-description > * {
-      color: white;
+      color: rgb(0, 0, 0);
     }
+  }
+}
+
+.selected {
+  background-color: rgb(38, 39, 36);
+  .song-description > * {
+    color: white;
   }
 }
 
