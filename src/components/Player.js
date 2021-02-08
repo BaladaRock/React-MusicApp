@@ -7,7 +7,13 @@ import {
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
+const Player = ({
+  songs,
+  currentSong,
+  setCurrentSong,
+  isPlaying,
+  setIsPlaying,
+}) => {
   // Different Player states
   const [timeInfo, setTimeInfo] = useState({
     currentTime: 0,
@@ -44,6 +50,17 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
       duration: e.target.duration,
     });
   };
+  const skipSongHandler = (toSkip) => {
+    const currentIndex = songs.indexOf(currentSong);
+    const nextIndex = currentIndex + toSkip;
+    const songsLength = songs.length;
+
+    setCurrentSong(
+      currentIndex === 0
+        ? songs[nextIndex] || songs[songsLength - 1]
+        : songs[nextIndex % songsLength]
+    );
+  };
 
   return (
     <div className="player">
@@ -59,7 +76,12 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         <p>{formatTime(timeInfo.duration || 0)}</p>
       </div>
       <div className="player-control">
-        <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
+        <FontAwesomeIcon
+          onClick={() => skipSongHandler(-1)}
+          className="skip-back"
+          size="2x"
+          icon={faAngleLeft}
+        />
         <FontAwesomeIcon
           onClick={playSongHandler}
           className="play"
@@ -67,6 +89,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
           icon={isPlaying ? faPause : faPlay}
         />
         <FontAwesomeIcon
+          onClick={() => skipSongHandler(1)}
           className="skip-forward"
           size="2x"
           icon={faAngleRight}

@@ -20,6 +20,8 @@ function App() {
       <Nav isToggled={isToggled} setIsToggled={setIsToggled} />
       <Song currentSong={currentSong} />
       <Player
+        songs={songs}
+        setCurrentSong={setCurrentSong}
         currentSong={currentSong}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
