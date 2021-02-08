@@ -41,7 +41,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
     setTimeInfo({
       ...timeInfo,
       currentTime: e.target.currentTime,
-      duration: e.target.duration || 0,
+      duration: e.target.duration,
     });
   };
 
@@ -52,11 +52,11 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         <input
           onChange={dragHandler}
           min="0"
-          max={timeInfo.duration}
+          max={timeInfo.duration || 0}
           value={timeInfo.currentTime}
           type="range"
         />
-        <p>{formatTime(timeInfo.duration)}</p>
+        <p>{formatTime(timeInfo.duration || 0)}</p>
       </div>
       <div className="player-control">
         <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />

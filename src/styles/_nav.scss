@@ -1,0 +1,21 @@
+.navigation {
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  button {
+    background: transparent;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 2px solid rgb(63, 63, 63);
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: rgb(63, 63, 63);
+      color: white;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
