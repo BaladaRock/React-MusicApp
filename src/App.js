@@ -15,12 +15,15 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isToggled, setIsToggled] = useState(true);
 
+  console.log(currentSong.name);
+
   return (
     <div className="App">
       <Nav isToggled={isToggled} setIsToggled={setIsToggled} />
       <Song currentSong={currentSong} />
       <Player
         songs={songs}
+        setSongs={setSongs}
         setCurrentSong={setCurrentSong}
         currentSong={currentSong}
         isPlaying={isPlaying}

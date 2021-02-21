@@ -9,7 +9,7 @@ import {
 
 const Player = ({
   songs,
-  song,
+  setSongs,
   currentSong,
   setCurrentSong,
   isPlaying,
@@ -20,16 +20,6 @@ const Player = ({
     currentTime: 0,
     duration: 0,
   });
-
-  // Use effect
-  /*useEffect(() => {
-    const selectSongHandler = () => {
-      song.active = true;
-      currentSong.active = false;
-      setCurrentSong(song);
-    };
-    [setCurrentSong];
-  });*/
 
   // Use ref to access audio tag from Player Component
   const audioRef = useRef(null);
