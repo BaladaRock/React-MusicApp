@@ -21,6 +21,13 @@ const Player = ({
     duration: 0,
   });
 
+  // Store current animation transition position and color gradients
+  const firstGradient = currentSong.color[0];
+  const secondGradient = currentSong.color[1];
+  const animationPercentage = Math.round(
+    (timeInfo.currentTime / timeInfo.duration) * 100
+  );
+
   // Use ref to access audio tag from Player Component
   const audioRef = useRef(null);
 
@@ -67,13 +74,24 @@ const Player = ({
     <div className="player">
       <div className="time-control">
         <p>{formatTime(timeInfo.currentTime)}</p>
-        <input
-          onChange={dragHandler}
-          min="0"
-          max={timeInfo.duration || 0}
-          value={timeInfo.currentTime}
-          type="range"
-        />
+        <div
+          style={{
+            background: `linear-gradient(to right, ${firstGradient},${secondGradient})`,
+          }}
+          className="track"
+        >
+          <input
+            onChange={dragHandler}
+            min="0"
+            max={timeInfo.duration || 0}
+            value={timeInfo.currentTime}
+            type="range"
+          />
+          <div
+            style={{ transform: `translateX(${animationPercentage}%)` }}
+            className="animate-track"
+          ></div>
+        </div>
         <p>{formatTime(timeInfo.duration || 0)}</p>
       </div>
       <div className="player-control">
