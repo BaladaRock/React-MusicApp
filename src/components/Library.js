@@ -1,7 +1,6 @@
 import LibrarySong from "./LibrarySong";
 
 const Library = ({ songs, currentSong, setCurrentSong, isToggled }) => {
-  console.log(currentSong.name, " in library");
   return (
     <div className={`library ${!isToggled ? "toggled" : ""}`}>
       <h2>Library</h2>

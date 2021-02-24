@@ -38,7 +38,7 @@ const Player = ({
     );
   };
 
-  const switchSongHandler = (e) => {
+  const switchSongHandler = () => {
     if (isPlaying) {
       audioRef.current.play();
     }
@@ -58,9 +58,14 @@ const Player = ({
       duration: e.target.duration,
     });
   };
-  const skipSongHandler = (toSkip) => {
+  const playNextSongHandler = () => {
+    const currentIndex = songs.indexOf(currentSong) + 1;
+    setCurrentSong(songs[currentIndex % songs.length]);
+  };
+
+  const changeSongHandler = (toChange) => {
     const currentIndex = songs.indexOf(currentSong);
-    const nextIndex = currentIndex + toSkip;
+    const nextIndex = currentIndex + toChange;
     const songsLength = songs.length;
 
     setCurrentSong(
@@ -88,7 +93,9 @@ const Player = ({
             type="range"
           />
           <div
-            style={{ transform: `translateX(${animationPercentage}%)` }}
+            style={{
+              transform: `translateX(${animationPercentage}%)`,
+            }}
             className="animate-track"
           ></div>
         </div>
@@ -96,7 +103,7 @@ const Player = ({
       </div>
       <div className="player-control">
         <FontAwesomeIcon
-          onClick={() => skipSongHandler(-1)}
+          onClick={() => changeSongHandler(-1)}
           className="skip-back"
           size="2x"
           icon={faAngleLeft}
@@ -108,18 +115,19 @@ const Player = ({
           icon={isPlaying ? faPause : faPlay}
         />
         <FontAwesomeIcon
-          onClick={() => skipSongHandler(1)}
+          onClick={() => changeSongHandler(1)}
           className="skip-forward"
           size="2x"
           icon={faAngleRight}
         />
       </div>
       <audio
+        src={currentSong.audio}
+        ref={audioRef}
         onLoadedData={switchSongHandler}
         onLoadedMetadata={updateTimeHandler}
         onTimeUpdate={updateTimeHandler}
-        ref={audioRef}
-        src={currentSong.audio}
+        onEnded={playNextSongHandler}
       ></audio>
     </div>
   );

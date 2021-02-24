@@ -15,6 +15,12 @@
   h2 {
     padding: 2rem;
   }
+
+  @media screen and (max-width: 768px) {
+    & {
+      width: 100%;
+    }
+  }
 }
 
 .song-description {
@@ -36,6 +42,7 @@
     width: 30%;
   }
   &:hover {
+    transition: all 0.4s ease;
     background: rgb(177, 128, 128);
     .song-description > * {
       color: rgb(0, 0, 0);

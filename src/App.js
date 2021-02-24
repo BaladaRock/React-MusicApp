@@ -15,10 +15,8 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isToggled, setIsToggled] = useState(true);
 
-  console.log(currentSong.name);
-
   return (
-    <div className="App">
+    <div className={`App ${!isToggled ? "library-active" : ""}`}>
       <Nav isToggled={isToggled} setIsToggled={setIsToggled} />
       <Song currentSong={currentSong} />
       <Player

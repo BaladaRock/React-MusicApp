@@ -9,7 +9,9 @@
     width: 50%;
     display: flex;
     align-items: center;
+    justify-content: center;
     input {
+      border: none;
       width: 100%;
       padding: 0.1rem 0rem;
       -webkit-appearance: none;
@@ -20,16 +22,24 @@
       }
       &[type="range"]::-webkit-slider-thumb {
         visibility: hidden;
-        -webkit-appearance: none;
+        // Will try to add styling for the thumb,
+        // when any new ideas will cross my mind
+        /*-webkit-appearance: none;
         border: none;
         margin-top: -1px;
         height: 15px;
         width: 15px;
         border-radius: 100%;
         background: black;
-        //transform: translateX(-50%);
-        //box-shadow: 1px 1px 1px #a5a0a0, 0px 0px 1px #0d0d0d;
+        transform: translateX(-50%);
+        box-shadow: 1px 1px 1px #a5a0a0, 0px 0px 1px #0d0d0d;
+        */
       }
+      // Style the range thumb in Mozilla
+      &[type="range"]::-moz-range-thumb {
+        visibility: hidden;
+      }
+      //Get rid of the focus outline
       &[type="range"]:focus {
         outline: none;
       }
@@ -42,6 +52,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 1rem;
+    float: left;
   }
 
   .animate-track {
@@ -63,6 +74,15 @@
     padding: 1rem;
     svg {
       cursor: pointer;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .time-control {
+      width: 90%;
+    }
+    .player-control {
+      width: 80%;
     }
   }
 }

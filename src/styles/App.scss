@@ -12,10 +12,19 @@ h2,
 h3 {
   color: rgb(80, 76, 76);
 }
+
 h3,
 h4 {
   font-weight: 600;
   color: rgb(107, 103, 103);
+}
+
+.library-active {
+  margin-left: 30%;
+}
+
+.App {
+  transition: all 0.8s ease;
 }
 
 @import "./player";
