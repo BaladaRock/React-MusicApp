@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -9,7 +9,6 @@ import {
 
 const Player = ({
   songs,
-  setSongs,
   currentSong,
   setCurrentSong,
   isPlaying,

@@ -61,6 +61,24 @@ function chillHop() {
       id: uuidv4(),
       active: false,
     },
+    {
+      name: "Brave New World",
+      cover: `${process.env.PUBLIC_URL}/brave.jpg`,
+      artist: "Iron Maiden, Brave New World, 2000",
+      audio: `${process.env.PUBLIC_URL}/Brave.mp3`,
+      color: ["#5E8BA1", "#333460"],
+      id: uuidv4(),
+      active: false,
+    },
+    {
+      name: "Mistreated",
+      cover: `${process.env.PUBLIC_URL}/mistreated.jpg`,
+      artist: "Deep Purple, Burn, 1974",
+      audio: `${process.env.PUBLIC_URL}/Mistreated.ogg`,
+      color: ["#677493", "#010103"],
+      id: uuidv4(),
+      active: false,
+    },
     //ADD MORE HERE
   ];
 }
