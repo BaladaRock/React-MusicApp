@@ -23,9 +23,13 @@ const Player = ({
   // Store current animation transition position and color gradients
   const firstGradient = currentSong.color[0];
   const secondGradient = currentSong.color[1];
-  const animationPercentage = Math.round(
-    (timeInfo.currentTime / timeInfo.duration) * 100
-  );
+
+  const animationPercentage = () => {
+    const currentPercentage = Math.round(
+      (timeInfo.currentTime / timeInfo.duration) * 100
+    );
+    return currentPercentage < 70 ? currentPercentage : currentPercentage - 1;
+  };
 
   // Use ref to access audio tag from Player Component
   const audioRef = useRef(null);
@@ -93,7 +97,7 @@ const Player = ({
           />
           <div
             style={{
-              transform: `translateX(${animationPercentage}%)`,
+              transform: `translateX(${animationPercentage()}%)`,
             }}
             className="animate-track"
           ></div>
